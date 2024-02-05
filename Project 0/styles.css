@@ -1,0 +1,185 @@
+
+
+body {
+background-color: #202124;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+#advsch {
+    background-color: #e8eaed;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #a2b9a9;
+}
+
+#nav {
+    display: flex;
+    height: auto;
+    flex-direction: row-reverse;
+    margin: 10px 5px 10px 5px;
+}
+
+
+
+#nav-links {
+    display: flex;
+}
+
+#nav-links > a {
+    color: #202124;
+}
+
+
+
+
+#nav-advancedsrch {
+    display: flex;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+    justify-content: space-between;
+    
+}
+
+#adv-header {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: #d93025;
+    font-size: 20px;
+    margin-left: 20px;
+    width: 90%;
+    
+}
+
+#header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px
+
+}
+
+#form-adv {
+    display: flex;
+    flex-direction: row;
+    max-width: 369px;
+    margin: 40px auto 0;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-left: 20px;
+}
+
+.table-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+
+
+.textDes {
+  
+   
+}
+
+.input-field {
+   margin-bottom: 20px;
+}
+
+.todo {
+    color: #555;
+    font-size: 11px;
+    white-space: pre;
+    text-align: end;
+}
+
+span {
+    color: #666;
+    font-family: monospace;
+    font-size: 11px;
+}
+
+.butn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+
+.navitem { 
+    font-family:Arial, Helvetica, sans-serif;
+    display: flex;
+    padding: 5px;
+    margin-left: 10px ;
+    margin-right: 10px;
+    text-align: center;
+    justify-content: center;
+    vertical-align: middle;
+    color: #e8eaed;
+    text-decoration: none;
+}
+
+/* logo  */
+#logo-container {
+    text-align: center; /* Center the child elements horizontally */
+    margin-top: 50px; /* Adjust the top margin as needed */
+}
+
+#logo {
+    max-width: 100%; /* Ensure the logo does not exceed its container's width */
+    height: auto; /* Maintain the aspect ratio of the logo */
+}
+
+#logo-images {
+    max-width: 30%; /* Ensure the logo does not exceed its container's width */
+    height: auto; /* Maintain the aspect ratio of the logo */
+}
+
+/* form */
+#form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 40px auto; /* Center the form using auto margins */
+}
+
+#search-bar {
+    min-height: 44px;
+    width: 80%;
+    border: 1px solid #5f6368;
+    background-color: #202124;
+    border-radius: 24px;
+    color: white;
+    padding-left: 25px;
+    margin-bottom: 10px; /* Add margin at the bottom for spacing */
+}
+
+.button {
+    background-color: #303134 ;
+    border: 1px solid #303134;
+    border-radius: 7px;
+    color: #e8eaed;
+    font-size: 14px;
+    margin: 11px 4px;
+    padding: 0px 16px;
+    height: 36px;
+    min-width: 54px;
+    
+}
+
+#search {
+    background-color: #4d90fe ;
+    color: white;
+    height: 36px;
+    border-radius: 5px;
+    border: none
+}

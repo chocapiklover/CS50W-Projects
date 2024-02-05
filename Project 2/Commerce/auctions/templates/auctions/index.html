@@ -1,0 +1,36 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="container">
+    <div class="text-center my-4"> 
+        <h2>Active Listings</h2>
+    </div>
+
+<!-- Showing listings -->
+
+    {% if active_listings %}
+    <div class="container">
+        <div class="row">
+            {% for listings in active_listings %}
+                <div class="col-md-4">
+                    <div class="card custom-card mb-4">
+                        <img src="{{ listings.image_url }}" class="card-img-top custom-card-img" alt="{{ listings.title }}" >
+                        <div class="card-body">
+                            <h5 class="card-title">{{ listings.title }}</h5>
+                            <h4>${{ listings.starting_bid }}</h4>
+                            <p class="card-text">{{ listings.description }}</p>
+                            <p class="card-text">Sold by: {{ listings.seller }}</p>
+                            <a href="{% url 'listingview' listing_id=listings.id %}" class="btn btn-primary">See listing</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+ 
+    
+    {% else %}
+        <h3>No Active listings at the moment...</h3>
+    {% endif %}
+{% endblock %}
+

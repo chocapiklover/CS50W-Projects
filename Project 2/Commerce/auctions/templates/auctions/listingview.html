@@ -1,0 +1,188 @@
+{% extends "auctions/layout.html" %}
+
+
+{% block body %}
+
+
+    <div class="container mt-5">
+        <div class="row">
+            
+            <div class="col-md-6">
+                <img src="{{ listings.image_url }}" class="img-fluid" alt="{{ listings.title }}" height="300px">
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="product-details">
+                    <h1 class="text-right">{{ listings.title }}</h1>
+                    <p class="text-muted text-right">Category: {{ listings.category }}</p>
+                    <p class="text-right">{{ listings.description }}</p>
+                    <p class="text-right">listed by: {{ listings.seller }}</p>
+                    {% if listings.status %}
+                        <p class="text-right">Status: Active</p>
+                    {% else %}
+                        <p class="text-right">Status: Closed</p>
+                    {% endif %}
+                    
+
+                    <!-- watchlist -->
+                    {% if user.is_authenticated %}    
+                    {% if is_watchlist %}
+                    <form action="{% url 'add_to_watchlist' listings.id %}" method="POST" class="text-right my-3">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Remove from Watchlist</button>
+                    </form>
+                    {% else %}
+                    <form action="{% url 'add_to_watchlist' listings.id %}" method="POST" class="text-right my-3">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Add to Watchlist</button>
+                    </form>
+                    {% endif %}
+                    {% endif %}
+                    <p class="price text-right my-3">Current bid: ${{ listings.starting_bid }}</p>
+
+                    <!-- bidding -->
+                    {% if message %}
+                    <div class="alert alert-danger text-center" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endif %} 
+                    
+                    {% if user.is_authenticated %}
+                    <div class="input-group my-3 d-flex justify-content-end">
+                        <form class="form-inline" action="{% url 'bid' listings.id %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group mx-2">
+                                <input type="number" class="form-control" name="bid_amount" step="0.01" required>
+                            </div>
+                            <button class="btn btn-primary custom-button-color" type="submit">Place Bid</button>
+                        </form>
+                    </div>
+                    {% else %}
+                    <div class="my-3 d-flex flex-column align-items-end">
+                        <h2 class="text-right mb-3">Login to place a bid</h2>
+                        <a class="btn btn-primary custom-button-color" href="{% url 'login' %}">Log In</a>
+                    </div>
+                    {% endif %}
+
+
+                    <!-- for closing auctions -->
+                    {% if user.is_authenticated and user == listings.seller and listings.status %}
+                    <div class="mt-5 d-flex flex-column align-items-end">
+                        <form action="{% url 'listingview' listing_id=listings.id %}" method="POST">
+                            {% csrf_token %}
+                            <button class="btn btn-danger" type="submit" name="close_auction">Close Auction</button>
+                        </form>
+                    </div>
+                    {% endif %}
+
+                    <!-- for auction winner -->
+                    {% if has_won %}
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#wonModal" style="display: none;">
+                        Launch Congratulations Modal
+                    </button>
+
+                    <!-- Congratulations Modal -->
+                    <div class="modal fade" id="wonModal" tabindex="-1" role="dialog" aria-labelledby="wonModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="wonModalLabel">Congratulations!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    You have won this auction!
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trigger the modal automatically when the page loads -->
+                    <script>
+                        $(document).ready(function(){
+                            $("#wonModal").modal('show');
+                        });
+                    </script>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- comments -->
+    <div class="container mt-5">
+        <!-- comments form -->
+        <form action="{% url 'add_comment' listings.id %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+            <label for="comment_input" class="form-label">Write you Comment</label>
+            <input type="text" class="form-control" name="comment_text">
+            <button type="submit" class="btn btn-primary custom-button-color my-3">Add Comment</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container mt-5">
+        <!-- comments -->
+    {% if comments %}
+        <h2>Comments</h2>
+
+        {% for comment in comments %}
+        <div class="card my-3">
+            <div class="card-header">
+              {{ comment.user.username}}
+            </div>
+            <div class="card-body">
+                <p>{{ comment.comments }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+
+
+    
+    
+   
+
+
+    <!-- comments form -->
+    <!-- <form action="{% url 'add_comment' listings.id %}" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="comment_input" class="form-label">Write you Comment</label>
+          <input type="text" class="form-control" name="comment_text">
+          <button type="submit" class="btn btn-primary">Add Comment</button>
+        </div>
+    </form> -->
+
+
+    <!-- comments -->
+    <!-- {% if comments %}
+        <h2>Comments</h2>
+
+        {% for comment in comments %}
+        <div class="card">
+            <div class="card-header">
+              {{ comment.user.username}}
+            </div>
+            <div class="card-body">
+                <p>{{ comment.comments }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %} -->
+
+    
+
+
+{% endblock %}
+

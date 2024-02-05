@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Search</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- navbar -->
+        <div id="nav">
+            <div></div>
+            <a class='navitem' href="index.html"> search </a>
+            <a class='navitem' href="advsearch.html"> Advanced search </a>
+        </div>
+
+        <!-- google logo -->
+        <div id="logo-container">
+            <img id='logo-images' src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/1024px-Google_Images_2015_logo.svg.png" alt="google images logo">
+        </div>
+
+        <!-- form -->
+        <div id="form-container">   
+            <form id='form' action="https://www.google.com/images">
+                <input id="search-bar" type="text" name="q">
+                <input id="search-bar" type="hidden" name="isch" value="isch">
+                    <div>
+                        <input class='button' type="submit" value="Image Search">
+                        <input class='button' type="submit" value="Google Search">
+                    </div>
+            </form>
+        </div> 
+    </body>
+</html>

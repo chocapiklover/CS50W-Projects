@@ -1,0 +1,70 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<div class="container mt-3">
+    <h2>Choose a Category</h2>
+
+    <!-- Choosing categories -->
+    
+    <form action="{% url 'category' %}" method="POST">
+        {% csrf_token %}
+        <label for="category" class="form-label">Choose Category:</label>
+        <select class="form-control my-3" name="category" required>
+            {% for item in categories %}
+                <option value="{{ item.categoryName }}" >{{ item.categoryName }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+  
+
+<!-- Showing listings -->
+
+    {% if active_listings %}
+    <div class="container">
+        <div class="row">
+            {% for listings in active_listings %}
+                <div class="col-md-4">
+                    <div class="card custom-card mb-4">
+                        <img src="{{ listings.image_url }}" class="card-img-top custom-card-img" alt="{{ listings.title }}" >
+                        <div class="card-body">
+                            <h5 class="card-title">{{ listings.title }}</h5>
+                            <h4>${{ listings.starting_bid }}</h4>
+                            <p class="card-text">{{ listings.description }}</p>
+                            <p class="card-text">Sold by: {{ listings.seller }}</p>
+                            <a href="{% url 'listingview' listing_id=listings.id %}" class="btn btn-primary">See listing</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+      
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+
+<ul> 
+    <div class="row" >
+    {% for listings in active_listings %}
+        <div class="card mx-3 my-3" style="width: 18rem;">
+            <img src="{{ listings.image_url }}" class="card-img-top" alt="{{ listings.title }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ listings.title }}</h5>
+              <h4>${{ listings.starting_bid }}</h4>
+              <p class="card-text">{{ listings.description }}</p>
+              <p class="card-text">Sold by: {{ listings.seller }}</p>
+              
+              <a href="{% url 'listingview' listing_id=listings.id %}" class="btn btn-primary">See listing</a>
+            </div>
+          </div>
+    {% endfor %}
+    </div>
+</ul>

@@ -1,0 +1,113 @@
+/* Reset styles */
+body {
+    padding: 10px;
+    margin: 0;
+}
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Libre+Baskerville:wght@700&family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
+
+/* Global styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Nav */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+}
+
+.nav-item {
+    margin: 0;
+}
+
+.nav-link {
+    color: #153a5b;
+}
+
+.nav-link.active {
+    color: #fff;
+}
+
+/* Card styles */
+.custom-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    color: #153a5b;
+}
+
+.custom-card img {
+    max-width: 100%;
+    height: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.custom-card .card-body {
+    text-align: center;
+}
+
+.custom-card .card-title,
+.custom-card .card-text,
+.custom-card .btn-primary {
+    color: #153a5b;
+}
+
+
+.custom-card .btn-primary {
+    background-color: #153a5b;
+    border-color: #153a5b;
+    border-radius: 50px;
+    color: #fff; 
+}
+
+
+.row {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.custom-card:not(:last-child) {
+    margin-right: 20px;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.product-details {
+    padding: 20px;
+}
+
+.price {
+    font-size: 1.25rem;
+    color: #007bff;
+}
+
+
+.col-md-6 {
+    margin-bottom: 20px;
+}
+
+.custom-button-color {
+    background-color: #153a5b;
+    color: #ffffff;
+}
+
+/* bid button  */
+.place-bid-btn {
+    float: right;
+    background-color: #153a5b;
+    color: #fff;
+    border-color: #153a5b;
+}

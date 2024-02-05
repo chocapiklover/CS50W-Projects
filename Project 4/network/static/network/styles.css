@@ -1,0 +1,106 @@
+:root {
+    --primary-color: #4e995c; /* Equivalent to fringy-flower-500 */
+    --background-color: #f4f9f4; /* Equivalent to fringy-flower-50 */
+    --text-color: #25422b; /* Equivalent to fringy-flower-900 */
+    --accent-color: #cbe7d0; /* Equivalent to fringy-flower-200 */
+    --secondary-color: #2b5032; /* Equivalent to fringy-flower-800 */
+    --notification-color: #102314; /* Equivalent to fringy-flower-950 */
+    --hover-selected-color: #32633b; /* Equivalent to fringy-flower-700 */
+
+    
+    
+}
+  
+/* gradient background  */
+.gradient-background {
+    background: linear-gradient(-45deg, #25422b, #32633b, #4e995c, #b0d9b7, #e5f3e7);
+    background-size: 400% 400%;
+    animation: gradient 12s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+}
+
+/* nav  */
+.navbar {
+    background-color: rgba(229, 243, 231, 0); 
+    
+}
+
+
+  
+
+body {
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+
+a {
+    color: var(--primary-color);
+    text-decoration: none; /* Remove underline by default */
+}
+
+
+
+a:hover {
+color: var(--hover-selected-color);
+}
+
+/* buttons  */
+.btn.btn-primary {
+    color: var(--primary-color);
+    background-color: var(--accent-color); /* Set the background color from your theme */
+    border: none;
+
+}
+
+.button:active,
+.button:focus {
+    background-color: var(--accent-color)!important; /* Your desired color when the button is clicked */
+    /* Other styles... */
+}
+
+
+.btn-custom-primary {
+    color: var(--scondary-color)!important;
+    background-color: var(--accent-color);
+    /* Add other styles as needed */
+}
+  
+
+.btn-outline-info {
+    color: var(--primary-color);
+    border-color: var(--accent-color);
+}
+
+.btn-outline-info:hover {
+    color: var(--hover-selected-color);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+  
+/* post card  */
+
+.date-text {
+  color: var(--accent-color);
+}
+
+
+/* profile page  */
+
+.custom-badge {
+  background-color: var(--accent-color); /* Replace with your color code */
+  color: var(--text-color)
+} 
